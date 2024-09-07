@@ -64,7 +64,7 @@ export const signup = async (req, res) => {
             await newuser.save()
        
         
-            io.emit("newSignup",newuser)
+        
 
         res.status(201).json({
             _id: newuser._id,
