@@ -5,17 +5,23 @@ import { TiMessages } from "react-icons/ti";
 import { useState,useEffect } from 'react';
 import useConversation from '../../zustand/useConversation.jsx';
 import { useAuthContext } from '../../context/AuthContext.jsx';
+import { IoChevronBackOutline } from "react-icons/io5";
 const MessageContainer = () => {
     const {selectedConversation,setselectedConversation}=useConversation()
+    const isselected = selectedConversation?._id
     useEffect(() => {
     //clean up 
     return () => setselectedConversation(null)
     }, [setselectedConversation])
     return (
-        <div className='md:min-w-[450px] flex flex-col '>
+        <div className={`${isselected?"":"hidden md:flex"}  md:min-h-[450px] md:w-[550px] w-[100vw] min-h-[100vh] flex flex-col`}>
             {!selectedConversation ? <NoChatSelected /> :
                 <>
-                    <div className='bg-slate-500 px-4 py-2 mb-2'>
+                    <div className='bg-slate-500 px-2 py-2 mb-2 flex items-center gap-2'>
+                        <IoChevronBackOutline onClick={() => {
+                          setselectedConversation(null)
+                        }
+                        } className='h-6 w-6 md:hidden'/>
                         <span className='label-text'>To:</span> <span className='text-gray-900 font-bold'>{selectedConversation.fullname}</span>
                     </div>
                     <Messages />

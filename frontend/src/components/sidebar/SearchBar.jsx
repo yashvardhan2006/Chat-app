@@ -24,9 +24,9 @@ console.log(conversation)
   }
   
   return (
-    <form onSubmit={handlesubmit} action="" className='flex items-center gap-2'>
+    <form onSubmit={handlesubmit} action="" className='flex items-center gap-2 justify-between'>
         <input type='text' value={search} onChange={(e) => {setSearch(e.target.value)}}
-         placeholder='Search...' className=' input input-bordered rounded-full' />
+         placeholder='Search...' className=' input w-full input-bordered rounded-full' />
         <button type='submit' className='btn btn-circle bg-sky-500 text-white' >
         <IoSearchSharp className='w-6 h-6 outline-none' />
         </button>
